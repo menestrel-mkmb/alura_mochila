@@ -205,6 +205,10 @@ html {
   margin: auto;
 }
 
+.done {
+  text-decoration: line-through;
+}
+
 .item .delete {
   cursor: pointer;
   margin-left: auto;

@@ -71,6 +71,13 @@
     updateList();
   };
 
+  let checkItem = (event) => {
+    event.preventDefault();
+
+    const item = event.target;
+    item.classList.toggle("done");
+  };
+
   //create html element node
   let createItemList = (item, index) => {
     const node = document.createElement("li");
@@ -82,6 +89,7 @@
 
     const name = document.createElement("span");
     name.innerText = item.name;
+    name.addEventListener("click", checkItem);
 
     const del = document.createElement("strong");
     del.textContent = "X";
