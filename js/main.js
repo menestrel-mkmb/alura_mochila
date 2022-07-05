@@ -53,15 +53,11 @@
     event.preventDefault();
 
     updateItem(event);
-    console.log(`push on addItem ${JSON.stringify(listItem)}`);
     listItem.push({ name: listObj.name, qtt: listObj.qtt });
 
-    console.log(`addItem listItem ${JSON.stringify(listItem)}`);
     localStorage.setItem("listItems", JSON.stringify(listItem));
 
     updateList();
-
-    console.log("####################");
   };
 
   //create html element node
