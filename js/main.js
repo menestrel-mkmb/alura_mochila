@@ -55,15 +55,27 @@
     updateItem(event);
     listItem.push({ name: listObj.name, qtt: listObj.qtt });
 
-    localStorage.setItem("listItems", JSON.stringify(listItem));
+    updateList();
+  };
+
+  let removeItem = (event) => {
+    event.preventDefault();
+
+    const item = event.target.parentElement;
+    const txt = item.querySelector("span").textContent;
+
+    listItem = listItem.filter((item) => {
+      return item.name !== txt;
+    });
 
     updateList();
   };
 
   //create html element node
-  let createItemList = (item) => {
+  let createItemList = (item, index) => {
     const node = document.createElement("li");
-    node.classList.add("item");
+    node.classList.add(`item`);
+    node.setAttribute("data-task", index);
 
     const qtt = document.createElement("strong");
     qtt.textContent = item.qtt;
@@ -71,17 +83,25 @@
     const name = document.createElement("span");
     name.innerText = item.name;
 
+    const del = document.createElement("strong");
+    del.textContent = "X";
+    del.addEventListener("click", removeItem);
+
     node.appendChild(qtt);
     node.appendChild(name);
+    node.appendChild(del);
 
     return node;
   };
 
   //put list items on html
   let updateList = () => {
+    localStorage.setItem("listItems", JSON.stringify(listItem));
+
     resetList();
-    listItem.forEach((item) => {
-      const node = createItemList(item);
+
+    listItem.forEach((item, index) => {
+      const node = createItemList(item, index);
 
       list.appendChild(node);
     });
