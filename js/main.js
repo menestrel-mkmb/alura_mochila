@@ -85,6 +85,7 @@
 
     const del = document.createElement("strong");
     del.textContent = "X";
+    del.classList.add("delete");
     del.addEventListener("click", removeItem);
 
     node.appendChild(qtt);

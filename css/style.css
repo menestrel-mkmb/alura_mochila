@@ -5,10 +5,12 @@ html {
 }
 
 .conteudo {
-  padding: 10vh 3em 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: 2em;
+
+  padding: 10vh 3em 0;
 }
 
 .principal {
@@ -166,22 +168,25 @@ html {
   margin: 0;
   padding: 0.5em;
   min-height: 350px;
-  min-width: 200px;
+  min-width: 400px;
   max-width: 50%;
 }
 
 .item {
-  list-style: none;
-  padding: 0.6em 2em;
   background: #ffffff;
   border-radius: 10px;
-  margin: 0 0 1em;
-  width: 100%;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  gap: 1em;
   font-size: 20px;
+  list-style: none;
+
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1em;
+
+  margin: 0 0 1em;
+  padding: 0.6em 2em;
+  width: 100%;
 }
 
 .item strong {
@@ -193,4 +198,14 @@ html {
   height: 40px;
   background: #c5965f;
   font-weight: 400;
+}
+
+.item span {
+  cursor: pointer;
+  margin: auto;
+}
+
+.item .delete {
+  cursor: pointer;
+  margin-left: auto;
 }
