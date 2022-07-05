@@ -1,7 +1,5 @@
 (() => {
   const form = document.querySelector(".adicionar");
-  const nameItem = document.querySelector("[data-inp=name]").value;
-  const qttItem = document.querySelector("[data-inp=quantity]").valueAsNumber;
 
   const list = document.querySelector("[data-list]");
   let listObj = {};
@@ -13,28 +11,38 @@
   };
   resetItem();
 
-  let getItem = (event) => {
+  let addItem = (event) => {
     event.preventDefault();
 
-    listObj.name = nameItem;
-    listObj.qtt = qttItem;
+    listObj.name = event.target.elements["nome"].value;
+    listObj.qtt = event.target.elements["quantidade"].valueAsNumber;
 
     listItem.push(listObj);
     updateList();
   };
 
+  let createItemList = (item) => {
+    const node = document.createElement("li");
+
+    node.classList.add("item");
+    node.textContent = item.name;
+
+    const qtt = document.createElement("strong");
+    qtt.textContent = item.qtt;
+
+    node.appendChild(qtt);
+
+    return node;
+  };
+
   let updateList = () => {
     list.innerHTML = "";
     listItem.forEach((item) => {
-      console.log(item, item.name);
-      const node = document.createElement("li");
-      node.classList.add("item");
-      node.textContent = item.name;
-      console.log(node, typeof item.name);
+      const node = createItemList(item);
 
       list.appendChild(node);
     });
   };
 
-  form.addEventListener("submit", getItem);
+  form.addEventListener("submit", addItem);
 })();
