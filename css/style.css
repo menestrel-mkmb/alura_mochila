@@ -8,6 +8,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  justify-content: space-around;
   gap: 2em;
 
   padding: 10vh 3em 0;
@@ -168,8 +169,8 @@ html {
   margin: 0;
   padding: 0.5em;
   min-height: 350px;
-  min-width: 400px;
-  max-width: 50%;
+  min-width: 300px;
+  max-width: 40%;
 }
 
 .item {

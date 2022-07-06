@@ -53,7 +53,8 @@
     event.preventDefault();
 
     updateItem(event);
-    listItem.push({ name: listObj.name, qtt: listObj.qtt });
+    if (!checkRepeat(listObj.name, listObj.qtt))
+      listItem.push({ name: listObj.name, qtt: listObj.qtt });
 
     updateList();
   };
@@ -76,6 +77,20 @@
 
     const item = event.target;
     item.classList.toggle("done");
+  };
+
+  let checkRepeat = () => {
+    let repeated = false;
+
+    listItem = listItem.filter((item) => {
+      if (item.name === listObj.name) {
+        item.qtt = listObj.qtt;
+        repeated = true;
+      }
+      return true;
+    });
+
+    return repeated;
   };
 
   //create html element node
@@ -108,6 +123,7 @@
     localStorage.setItem("listItems", JSON.stringify(listItem));
 
     resetList();
+    listItem.sort();
 
     listItem.forEach((item, index) => {
       const node = createItemList(item, index);
