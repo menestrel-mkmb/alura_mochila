@@ -93,6 +93,14 @@
     return repeated;
   };
 
+  let createItemLi = (index) => {
+    const node = document.createElement("li");
+    node.classList.add(`item`);
+    node.setAttribute("data-task", index);
+
+    return node;
+  };
+
   let createQttBtn = (item) => {
     const qtt = document.createElement("strong");
     qtt.textContent = item.qtt;
@@ -120,9 +128,7 @@
 
   //create html element node
   let createItemList = (item, index) => {
-    const node = document.createElement("li");
-    node.classList.add(`item`);
-    node.setAttribute("data-task", index);
+    const node = createItemLi(index);
 
     const qtt = createQttBtn(item);
     const name = createItemSpan(item);
