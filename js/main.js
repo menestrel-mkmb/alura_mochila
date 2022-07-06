@@ -93,23 +93,40 @@
     return repeated;
   };
 
+  let createQttBtn = (item) => {
+    const qtt = document.createElement("strong");
+    qtt.textContent = item.qtt;
+
+    return qtt;
+  };
+
+  let createItemSpan = (item) => {
+    const name = document.createElement("span");
+    name.innerText = item.name;
+    name.addEventListener("click", checkItem);
+
+    return name;
+  };
+
+  let createDelBtn = () => {
+    const del = document.createElement("strong");
+
+    del.textContent = "X";
+    del.classList.add("delete");
+    del.addEventListener("click", removeItem);
+
+    return del;
+  };
+
   //create html element node
   let createItemList = (item, index) => {
     const node = document.createElement("li");
     node.classList.add(`item`);
     node.setAttribute("data-task", index);
 
-    const qtt = document.createElement("strong");
-    qtt.textContent = item.qtt;
-
-    const name = document.createElement("span");
-    name.innerText = item.name;
-    name.addEventListener("click", checkItem);
-
-    const del = document.createElement("strong");
-    del.textContent = "X";
-    del.classList.add("delete");
-    del.addEventListener("click", removeItem);
+    const qtt = createQttBtn(item);
+    const name = createItemSpan(item);
+    const del = createDelBtn();
 
     node.appendChild(qtt);
     node.appendChild(name);
